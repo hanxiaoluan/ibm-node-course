@@ -12,7 +12,7 @@ const Level = {
 /* the current log level */
 let logLevel = Level.INFO;
 
-function log(meeeageLogLevel, message, startTime) {
+function log(messageLogLevel, message, startTime) {
   if (messageLogLevel.priority >= logLevel.priority) {
     let now = Date.now();
     let outputString = now.toString() + ":" + messageLogLevel.outputString;
@@ -24,7 +24,7 @@ function log(meeeageLogLevel, message, startTime) {
         ":" +
         message +
         ":(elapsed time:)" +
-        `${1000 * (stopTime[0] + stopTime[1] / 1e9)}` +
+        `${1000 * (stopTime[ 0 ] + stopTime[ 1 ] / 1e9)}` +
         "ms";
     } else {
       computedMessage = outputString + ":" + message;

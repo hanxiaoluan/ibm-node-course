@@ -21,18 +21,18 @@ function processFile(fileName, resultsCallback) {
       KEY_LENGTH,
       DIGEST,
       (err, derivedKey) => {
-        var derivedKeysAsString;
+        var derivedKeyAsString;
         if (err) {
           logger.error("SomeThing went horribly wrong;" + err.message);
           throw err;
         } else {
-          derivedKeysAsString = derivedKey.toString("hex");
+          derivedKeyAsString = derivedKey.toString("hex");
           logger.debug(
             "crypto.pbkdf2(): Derived key: '" + derivedKeyAsString + "'",
             startTime
           );
         }
-        resultsCallback(err, derivedKeysAsString);
+        resultsCallback(err, derivedKeyAsString);
       }
     );
     logger.trace("fs.readFile():END", startTime);
@@ -57,3 +57,6 @@ function processFileSync(fileName) {
   logger.trace("processFileSync():END", startTime);
   return derivedKeyAsString;
 }
+module.exports.processFile = processFile;
+module.exports.processFileSync = processFileSync;
+
